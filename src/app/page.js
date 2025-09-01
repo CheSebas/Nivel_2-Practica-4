@@ -1,95 +1,49 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+/* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
+
+function CategoryCard({ href, title, subtitle, imageSrc }) {
+  return (
+    <Link href={href} className="flex flex-col items-center gap-2 group">
+      <div className="relative w-40 h-60 bg-gray-800 flex items-center justify-center group-hover:opacity-80 transition-opacity">
+        <img
+          src={imageSrc}
+          alt={`${title} icon`}
+          className="max-w-full max-h-full"
+        />
+        <span className="absolute text-white text-2xl font-bold tracking-widest">
+          {title}
+        </span>
+      </div>
+      <p className="text-gray-600">Popular {subtitle}</p>
+    </Link>
+  );
+}
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+    <div>
+      <div className="bg-gray-800 text-white">
+        <div className="max-w-6xl mx-auto p-4">
+          <h1 className="text-2xl font-semibold">Popular Titles</h1>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+      </div>
+
+      <div className="max-w-6xl mx-auto p-8">
+        <div className="flex flex-col sm:flex-row gap-8 mt-4">
+          <CategoryCard
+            href="/series"
+            title="SERIES"
+            subtitle="Series"
+            imageSrc="/prueba/assets/placeholder.png"
           />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
+          <CategoryCard
+            href="/movies"
+            title="MOVIES"
+            subtitle="Movies"
+            imageSrc="/prueba/assets/placeholder.png"
           />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        </div>
+      </div>
     </div>
   );
 }
